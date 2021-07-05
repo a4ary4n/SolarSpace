@@ -1,0 +1,82 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JSpinner;
+import javax.swing.JList;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import java.awt.Choice;
+
+public class Signup_Appliances_Form extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Signup_Appliances_Form frame = new Signup_Appliances_Form();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Signup_Appliances_Form() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 602, 713);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lbl_appliances_reg = new JLabel("SOLAR PANELS REGISTRATION");
+		lbl_appliances_reg.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_appliances_reg.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lbl_appliances_reg.setBounds(108, 10, 365, 36);
+		contentPane.add(lbl_appliances_reg);
+		
+		JLabel lbl_panel1 = new JLabel("Panel 1 ID");
+		lbl_panel1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel1.setBounds(61, 72, 82, 22);
+		contentPane.add(lbl_panel1);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField.setColumns(10);
+		textField.setBounds(144, 394, 164, 42);
+		contentPane.add(textField);
+		
+		JSpinner spinner_quantity = new JSpinner();
+		spinner_quantity.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		spinner_quantity.setBounds(423, 71, 47, 26);
+		contentPane.add(spinner_quantity);
+		
+		Choice choice = new Choice();
+		choice.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		choice.setBounds(182, 72, 252, 18);
+		String appliances[] = {"01 - AC", "02 - Ceiling Fan", "03 - Clothes Iron/Press",
+				"04 - Computer/PC/Laptop", "05 - Light Bulb", "06 - Microwave Oven", 
+				"07 - Tubelight", "08 - TV", "09 - Washing Machine", "10 - Water Heater"};
+		for (int i = 0; i < 10; i++)
+			choice.add(appliances[i]);
+		contentPane.add(choice);
+	}
+}

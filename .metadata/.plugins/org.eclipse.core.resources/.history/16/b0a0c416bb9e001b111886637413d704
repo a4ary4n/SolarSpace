@@ -1,0 +1,82 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import javax.swing.JSplitPane;
+import javax.swing.JPasswordField;
+
+public class Login_Form extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField tf_username;
+	private JPasswordField pf_password;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Login_Form frame = new Login_Form();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Login_Form() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblSignin = new JLabel("SIGNIN");
+		lblSignin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSignin.setFont(new Font("Tahoma", Font.BOLD, 18));
+		contentPane.add(lblSignin, BorderLayout.NORTH);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		tf_username = new JTextField();
+		tf_username.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_username.setBounds(132, 53, 284, 42);
+		panel.add(tf_username);
+		tf_username.setColumns(10);
+		
+		pf_password = new JPasswordField();
+		pf_password.setToolTipText("");
+		pf_password.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		pf_password.setBounds(132, 105, 284, 42);
+		panel.add(pf_password);
+		
+		JLabel lbl_username = new JLabel("Username");
+		lbl_username.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_username.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_username.setBounds(10, 53, 112, 42);
+		panel.add(lbl_username);
+		
+		JLabel lbl_password = new JLabel("Password");
+		lbl_password.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_password.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_password.setBounds(10, 105, 112, 42);
+		panel.add(lbl_password);
+	}
+}

@@ -1,0 +1,136 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+public class Signup_User_Form extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField tf_firstname;
+	private JTextField tf_lastname;
+	private JTextField tf_hno;
+	private JTextField tf_locality;
+	private JTextField tf_city;
+	private JTextField tf_pincode;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Signup_User_Form frame = new Signup_User_Form();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Signup_User_Form() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 615, 512);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lbl_firstname = new JLabel("First Name");
+		lbl_firstname.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_firstname.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_firstname.setBounds(55, 56, 112, 42);
+		contentPane.add(lbl_firstname);
+		
+		JLabel lbl_usersignup = new JLabel("USER SIGN-UP");
+		lbl_usersignup.setBounds(210, 10, 138, 22);
+		lbl_usersignup.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_usersignup.setFont(new Font("Tahoma", Font.BOLD, 18));
+		contentPane.add(lbl_usersignup);
+		
+		tf_firstname = new JTextField();
+		tf_firstname.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_firstname.setBounds(224, 57, 282, 42);
+		contentPane.add(tf_firstname);
+		tf_firstname.setColumns(10);
+		
+		JLabel lbl_lastname = new JLabel("Last Name");
+		lbl_lastname.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_lastname.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_lastname.setBounds(55, 108, 112, 42);
+		contentPane.add(lbl_lastname);
+		
+		tf_lastname = new JTextField();
+		tf_lastname.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_lastname.setColumns(10);
+		tf_lastname.setBounds(224, 109, 282, 42);
+		contentPane.add(tf_lastname);
+		
+		JLabel lbl_hno = new JLabel("House No.");
+		lbl_hno.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_hno.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_hno.setBounds(55, 160, 112, 42);
+		contentPane.add(lbl_hno);
+		
+		tf_hno = new JTextField();
+		tf_hno.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_hno.setColumns(10);
+		tf_hno.setBounds(224, 161, 80, 42);
+		contentPane.add(tf_hno);
+		
+		JLabel lbl_locality = new JLabel("Locality");
+		lbl_locality.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_locality.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_locality.setBounds(55, 213, 112, 42);
+		contentPane.add(lbl_locality);
+		
+		tf_locality = new JTextField();
+		tf_locality.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_locality.setColumns(10);
+		tf_locality.setBounds(224, 214, 282, 42);
+		contentPane.add(tf_locality);
+		
+		JLabel lbl_city = new JLabel("City");
+		lbl_city.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_city.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_city.setBounds(55, 265, 112, 42);
+		contentPane.add(lbl_city);
+		
+		tf_city = new JTextField();
+		tf_city.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_city.setColumns(10);
+		tf_city.setBounds(224, 266, 282, 42);
+		contentPane.add(tf_city);
+		
+		JLabel lbl_pincode = new JLabel("Pincode");
+		lbl_pincode.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_pincode.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_pincode.setBounds(55, 317, 112, 42);
+		contentPane.add(lbl_pincode);
+		
+		tf_pincode = new JTextField();
+		tf_pincode.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_pincode.setColumns(10);
+		tf_pincode.setBounds(224, 318, 282, 42);
+		contentPane.add(tf_pincode);
+		
+		JButton btn_toSolar = new JButton("Next");
+		btn_toSolar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btn_toSolar.setBounds(224, 397, 100, 42);
+		contentPane.add(btn_toSolar);
+	}
+}

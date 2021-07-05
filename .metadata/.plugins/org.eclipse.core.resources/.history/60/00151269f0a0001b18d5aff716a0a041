@@ -1,0 +1,449 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JButton;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+
+public class Signup_Solar_Form extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField tf_panel1;
+	private JLabel lbl_quantity;
+	private JLabel lbl_solar_reg;
+	private JLabel lbl_panel2;
+	private JTextField tf_panel2;
+	private JLabel lbl_panel3;
+	private JTextField tf_panel3;
+	private JLabel lbl_panel4;
+	private JTextField tf_panel4;
+	private JLabel lbl_panel5;
+	private JTextField tf_panel5;
+	private JLabel lbl_panel6;
+	private JTextField tf_panel6;
+	private JLabel lbl_panel7;
+	private JTextField tf_panel7;
+	private JLabel lbl_panel8;
+	private JTextField tf_panel8;
+	private JLabel lbl_panel9;
+	private JTextField tf_panel9;
+	private JLabel lbl_panel10;
+	private JTextField tf_panel10;
+	private JLabel lbl_city;
+	private JTextField tf_city;
+	private JButton btn_toAppliances;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Signup_Solar_Form frame = new Signup_Solar_Form();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Signup_Solar_Form() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 557, 715);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		int panel_ids[] = new int[10];
+		
+		JLabel lbl_panel1 = new JLabel("Panel 1 ID");
+		lbl_panel1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel1.setBounds(104, 93, 112, 36);
+		contentPane.add(lbl_panel1);
+		
+		tf_panel1 = new JTextField();
+		tf_panel1.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel1.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[0] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel1.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel1.setColumns(10);
+		tf_panel1.setBounds(261, 91, 164, 42);
+		contentPane.add(tf_panel1);
+		
+		lbl_quantity = new JLabel("No. of Solar Panels");
+		lbl_quantity.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_quantity.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_quantity.setBounds(73, 44, 143, 36);
+		contentPane.add(lbl_quantity);
+		
+		lbl_solar_reg = new JLabel("SOLAR PANELS REGISTRATION");
+		lbl_solar_reg.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_solar_reg.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lbl_solar_reg.setBounds(90, 10, 365, 36);
+		contentPane.add(lbl_solar_reg);
+		
+		JSpinner spinner_quantity = new JSpinner();
+		spinner_quantity.setModel(new SpinnerNumberModel(1, 1, 10, 1));
+		spinner_quantity.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		spinner_quantity.setBounds(261, 45, 45, 36);
+		contentPane.add(spinner_quantity);
+		
+		lbl_panel2 = new JLabel("Panel 2 ID");
+		lbl_panel2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel2.setBounds(104, 141, 112, 36);
+		contentPane.add(lbl_panel2);
+		
+		tf_panel2 = new JTextField();
+		tf_panel2.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel2.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[1] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel2.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel2.setColumns(10);
+		tf_panel2.setBounds(261, 139, 164, 42);
+		contentPane.add(tf_panel2);
+		
+		lbl_panel3 = new JLabel("Panel 3 ID");
+		lbl_panel3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel3.setBounds(104, 189, 112, 36);
+		contentPane.add(lbl_panel3);
+		
+		tf_panel3 = new JTextField();
+		tf_panel3.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel3.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[2] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel3.setColumns(10);
+		tf_panel3.setBounds(261, 187, 164, 42);
+		contentPane.add(tf_panel3);
+		
+		lbl_panel4 = new JLabel("Panel 4 ID");
+		lbl_panel4.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel4.setBounds(104, 237, 112, 36);
+		contentPane.add(lbl_panel4);
+		
+		tf_panel4 = new JTextField();
+		tf_panel4.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel4.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[3] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel4.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel4.setColumns(10);
+		tf_panel4.setBounds(261, 235, 164, 42);
+		contentPane.add(tf_panel4);
+		
+		lbl_panel5 = new JLabel("Panel 5 ID");
+		lbl_panel5.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel5.setBounds(104, 285, 112, 36);
+		contentPane.add(lbl_panel5);
+		
+		tf_panel5 = new JTextField();
+		tf_panel5.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel5.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[4] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel5.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel5.setColumns(10);
+		tf_panel5.setBounds(261, 283, 164, 42);
+		contentPane.add(tf_panel5);
+		
+		lbl_panel6 = new JLabel("Panel 6 ID");
+		lbl_panel6.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel6.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel6.setBounds(104, 333, 112, 36);
+		contentPane.add(lbl_panel6);
+		
+		tf_panel6 = new JTextField();
+		tf_panel6.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel6.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[5] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel6.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel6.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel6.setColumns(10);
+		tf_panel6.setBounds(261, 331, 164, 42);
+		contentPane.add(tf_panel6);
+		
+		lbl_panel7 = new JLabel("Panel 7 ID");
+		lbl_panel7.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel7.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel7.setBounds(104, 381, 112, 36);
+		contentPane.add(lbl_panel7);
+		
+		tf_panel7 = new JTextField();
+		tf_panel7.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel7.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[6] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel7.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel7.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel7.setColumns(10);
+		tf_panel7.setBounds(261, 379, 164, 42);
+		contentPane.add(tf_panel7);
+		
+		lbl_panel8 = new JLabel("Panel 8 ID");
+		lbl_panel8.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel8.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel8.setBounds(104, 429, 112, 36);
+		contentPane.add(lbl_panel8);
+		
+		tf_panel8 = new JTextField();
+		tf_panel8.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel8.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[7] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel8.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel8.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel8.setColumns(10);
+		tf_panel8.setBounds(261, 427, 164, 42);
+		contentPane.add(tf_panel8);
+		
+		lbl_panel9 = new JLabel("Panel 9 ID");
+		lbl_panel9.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel9.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel9.setBounds(104, 477, 112, 36);
+		contentPane.add(lbl_panel9);
+		
+		tf_panel9 = new JTextField();
+		tf_panel9.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel9.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[8] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel9.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel9.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel9.setColumns(10);
+		tf_panel9.setBounds(261, 475, 164, 42);
+		contentPane.add(tf_panel9);
+		
+		lbl_panel10 = new JLabel("Panel 10 ID");
+		lbl_panel10.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_panel10.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_panel10.setBounds(104, 525, 112, 36);
+		contentPane.add(lbl_panel10);
+		
+		tf_panel10 = new JTextField();
+		tf_panel10.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String inp = tf_panel10.getText();
+				if (inp.compareTo("") != 0) {
+					panel_ids[9] = Integer.parseInt(inp);
+				}
+			}
+		});
+		tf_panel10.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//numbers only!
+				if (!Character.isDigit(e.getKeyChar())) {
+					e.consume();
+				}
+			}
+		});
+		tf_panel10.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_panel10.setColumns(10);
+		tf_panel10.setBounds(261, 523, 164, 42);
+		contentPane.add(tf_panel10);
+		
+		lbl_city = new JLabel("City");
+		lbl_city.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_city.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbl_city.setBounds(104, 573, 112, 36);
+		contentPane.add(lbl_city);
+		
+		tf_city = new JTextField();
+		tf_city.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_city.setColumns(10);
+		tf_city.setBounds(261, 571, 164, 42);
+		contentPane.add(tf_city);
+		
+		
+		
+		btn_toAppliances = new JButton("Next");
+		btn_toAppliances.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int quantity = (int) spinner_quantity.getValue();
+				String city = tf_city.getText();
+				String uname = Signup_User_Form.getUsername();
+				
+				for (int i = 0; i < quantity; i++) {
+					PreparedStatement st;
+					int rs;
+					String query = "INSERT INTO solarspace.spanel_user VALUES "
+							+ "(?, ?, ?)";
+					try {
+						st = DB_Connection.getConnection().prepareStatement(query);
+						st.setInt(1, panel_ids[i]);
+						st.setString(2, uname);
+						st.setString(3, city);
+						
+						rs = st.executeUpdate();
+						if (rs != 0) {
+							Signup_Appliances_Form appl = new Signup_Appliances_Form();
+							appl.setVisible(true);
+							appl.setLocationRelativeTo(null);
+							
+							//close current page
+							dispose();
+						}	
+					} catch (SQLException err) {
+						System.err.println(err);
+					}
+				}
+			}
+		});
+		btn_toAppliances.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btn_toAppliances.setBounds(206, 626, 100, 42);
+		contentPane.add(btn_toAppliances);
+	}
+}
